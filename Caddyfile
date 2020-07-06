@@ -1,0 +1,35 @@
+{
+  http_port 8020
+}
+
+:8020 {
+  encode gzip
+
+  @get {
+	  method GET
+	  path /
+  }
+
+  @post {
+	  method POST
+	  path /
+  }
+
+  reverse_proxy @get 127.0.0.1:9091 {
+
+    transport http {
+      dial_timeout 3000ms
+      keepalive 15s
+      keepalive_idle_conns 1000
+    }
+  }
+
+  reverse_proxy @post 127.0.0.1:9092 {
+
+    transport http {
+      dial_timeout 3000ms
+      keepalive 15s
+      keepalive_idle_conns 100
+    }
+  }
+}
