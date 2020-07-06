@@ -1,5 +1,5 @@
 # dummy-mock
-referenced by : https://medium.com/@aimvec/high-performance-mocking-for-load-testing-bd6d69610cc9
+Referenced and Thanks to : https://medium.com/@aimvec/high-performance-mocking-for-load-testing-bd6d69610cc9
 
 ### preparation:
 install docker  
