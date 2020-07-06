@@ -14,5 +14,7 @@ install caddy server
 
 `caddy start`  
 
+![Mock Service Response](response.png)
+
 P.S. Removed unused docker images
 `docker rmi -f $(docker images -f "dangling=true" -q)`
