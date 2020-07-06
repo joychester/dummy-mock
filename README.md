@@ -6,7 +6,7 @@ install docker
 install caddy server  
 
 ### How to: 
-
+`cd path/to/target/dir`  
 `docker build . -t mymock`  
 `docker images`  
 `docker run -d --rm -p 9091:80 mymock`  
