@@ -1,10 +1,11 @@
-//https://github.com/nodejs/node/issues/26357
-//https://github.com/node-modules/agentkeepalive
+//help info: https://github.com/nodejs/node/issues/26357
+//help info: https://github.com/node-modules/agentkeepalive
 
 const http = require('http');
 const AgentKA = require('agentkeepalive');
 const { exec } = require("child_process");
 
+// Backend mock service
 const backend_service_host = "127.0.0.1.9091";
 
 const defaultAgent = new http.Agent({
