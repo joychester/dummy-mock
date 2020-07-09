@@ -34,7 +34,7 @@ const options = {
   port: '9091',
   path: '/',
   method: 'GET',
-  agent: optimaldefaultAgent // keepaliveAgent or defaultAgent or false
+  agent: optimaldefaultAgent //could be: optimaldefaultAgent, keepaliveAgent, defaultAgent or false
 };
 
 //handle incoming requests
