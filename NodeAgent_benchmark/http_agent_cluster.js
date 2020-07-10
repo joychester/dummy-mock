@@ -14,19 +14,22 @@ const defaultAgent = new http.Agent({
 });
 
 const optimaldefaultAgent = new http.Agent({
-  keepAlive: true,
-  keepAliveMsecs: 30000,
-  maxFreeSockets: 10,
-  maxSockets: 100,
-  timeout: 60000,
-  scheduling: 'fifo'
+  keepAlive: true, // Keep sockets around in a pool to be used by other requests in the future
+  keepAliveMsecs: 30000, // specifies the initial delay for TCP Keep-Alive packets
+  maxFreeSockets: 10, // Maximum number of sockets to leave open in a free state
+  maxSockets: 100, // Maximum number of sockets to allow per host
+  timeout: 60000, // Socket timeout in milliseconds
+  scheduling: 'fifo' //Scheduling strategy to apply when picking the next free socket to use, or 'lifo'
 });
 
 const keepaliveAgent = new AgentKA({
-  maxSockets: 100,
-  maxFreeSockets:10,
-  timeout: 60000,
-  freeSocketTimeout: 30000
+  keepAlive: true, // Keep sockets around in a pool to be used by other requests in the future
+  keepAliveMsecs: 30000, // specifies the initial delay for TCP Keep-Alive packets
+  maxSockets: 100, // Maximum number of sockets to allow per host
+  maxFreeSockets:10, // Maximum number of sockets (per host) to leave open in a free state
+  timeout: 60000, // Sets the working socket to timeout after timeout milliseconds of inactivity on the working socket
+  freeSocketTimeout: 15000, // Sets the free socket to timeout after freeSocketTimeout milliseconds of inactivity on the free socket.
+  socketActiveTTL: null // Sets the socket active time to live, even if it's in use. avoid the TCP connection leak
 });
 
 const options = {
@@ -51,7 +54,7 @@ if (cluster.isMaster) {
 
   console.log(`Master ${process.pid} is running`);
 
-  //Fork workers
+  //Fork workers == CPU cores, Mac OS seems only bothers 0,2,4,6 cores??
   for (let i = 0 ; i < numCPUs; i++) {
     cluster.fork();
   }
