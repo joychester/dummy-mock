@@ -13,11 +13,12 @@ const defaultAgent = new http.Agent({
 });
 
 const optimaldefaultAgent = new http.Agent({
-  keepAlive: true,
-  keepAliveMsecs: 30000,
-  maxFreeSockets: 10,
-  maxSockets: 100,
-  timeout: 60000
+  keepAlive: true, // Keep sockets around in a pool to be used by other requests in the future
+  keepAliveMsecs: 30000, // specifies the initial delay for TCP Keep-Alive packets
+  maxFreeSockets: 10, // Maximum number of sockets to leave open in a free state
+  maxSockets: 100, // Maximum number of sockets to allow per host
+  timeout: 60000, // Socket timeout in milliseconds
+  scheduling: 'fifo' //Scheduling strategy to apply when picking the next free socket to use, or 'lifo'
 });
 
 const keepaliveAgent = new AgentKA({
