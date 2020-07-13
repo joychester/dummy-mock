@@ -17,7 +17,7 @@ const optimaldefaultAgent = new http.Agent({
   keepAliveMsecs: 30000, // specifies the initial delay for TCP Keep-Alive packets
   maxFreeSockets: 10, // Maximum number of sockets to leave open in a free state
   maxSockets: 100, // Maximum number of sockets to allow per host
-  timeout: 60000, // Socket timeout in milliseconds
+  timeout: 60000, // Socket Idle timeout in milliseconds, Client Side TCP Connection will be from ESTABLISHED to TIME_WAIT
   scheduling: 'fifo' //Scheduling strategy to apply when picking the next free socket to use, or 'lifo'
 });
 
