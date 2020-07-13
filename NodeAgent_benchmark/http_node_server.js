@@ -27,7 +27,7 @@ const keepaliveAgent = new AgentKA({
   maxSockets: 100, // Maximum number of sockets to allow per host
   maxFreeSockets:10, // Maximum number of sockets (per host) to leave open in a free state
   timeout: 60000, // Sets the working socket to timeout after timeout milliseconds of inactivity on the working socket
-  freeSocketTimeout: 15000, // Sets the free socket to timeout after freeSocketTimeout milliseconds of inactivity on the free socket.
+  freeSocketTimeout: 15000, // Sets the free socket to timeout after freeSocketTimeout milliseconds of inactivity on the free socket. The True Keepalive timeout??
   socketActiveTTL: null // Sets the socket active time to live, even if it's in use. avoid the TCP connection leak
 });
 
