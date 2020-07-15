@@ -1,5 +1,6 @@
 const express = require('express');
 const request = require('request');
+const http = require('http');
 const { exec } = require("child_process");
 
 const app = express();
@@ -9,8 +10,8 @@ const backend_service_host = "127.0.0.1.9091";
 const options = {
   uri: 'http://127.0.0.1:9091/',
   method: 'GET',
-  gzip: true
-  //agent: keepaliveAgent // keepaliveAgent or defaultAgent or false
+  gzip: true,
+  //agent: new http.Agent({keepAlive: true})
 };
 
 app.get('/', function(req, res) {
