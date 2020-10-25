@@ -16,5 +16,8 @@ install caddy server
 
 ![Mock Service Response](response.png)
 
-P.S. Removed unused docker images
+P.S. 
+Removed unused docker images
 `docker rmi -f $(docker images -f "dangling=true" -q)`
+
+You need to rebuild your docker image if you want to change your `response.json` file
