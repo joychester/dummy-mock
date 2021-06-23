@@ -14,6 +14,8 @@ install caddy server
 
 `caddy start`  
 
+
+![Mock Service Workflow](dummymock.png)
 ![Mock Service Response](response.png)
 
 P.S. 
