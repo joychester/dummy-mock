@@ -7,10 +7,10 @@ install caddy server
 
 ### How to: 
 `cd path/to/target/dir/with/dockerfile`  
-`docker build . -t mymock`  
+`docker build . -t dummymock`  
 `docker images`  
-`docker run -d --rm -p 9091:80 mymock`  
-`docker ps -a | grep mymock`  
+`docker run -d --rm -p 9091:80 dummymock`  
+`docker ps -a | grep dummymock`  
 
 `caddy start`  
 
