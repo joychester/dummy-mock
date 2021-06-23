@@ -16,32 +16,42 @@ var mockGet []byte
 var mockPost []byte
 
 func MockGet(ctx *fasthttp.RequestCtx) {
-	ctx.Response.Header.Set("Content-Type", "application/json")
-	// To-DO: move this as a param
-	var duration int
-	if os.Args[1] != "" {
-		duration, _ = strconv.Atoi(os.Args[1])
+
+	var duration int = 0
+
+	fmt.Printf("query params: %v\n", ctx.QueryArgs())
+	
+	if ctx.QueryArgs().Has("duration") {
+		duration, _ = strconv.Atoi(string(ctx.QueryArgs().Peek("duration")))
+		fmt.Printf("response time: %d\n", duration )
 	} else {
-		duration = 250
+		duration = 100
+		fmt.Printf("using default response time: %d\n", duration )
 	}
 
 	time.Sleep(time.Duration(duration) * time.Millisecond)
+
+	ctx.Response.Header.Set("Content-Type", "application/json")
 	ctx.Response.Header.Set("X-Server-Time", strconv.Itoa(duration))
 
 	ctx.Write(mockGet)
 }
 
 func MockPost(ctx *fasthttp.RequestCtx) {
-	ctx.Response.Header.Set("Content-Type", "application/json")
-	// To-DO: move this as a param
-	var duration int
-	if os.Args[1] != "" {
-		duration, _ = strconv.Atoi(os.Args[1])
+	
+	var duration int = 0
+
+	if ctx.QueryArgs().Has("duration") {
+		duration, _ = strconv.Atoi(string(ctx.QueryArgs().Peek("duration")))
+		fmt.Printf("response time: %d\n", duration )
 	} else {
-		duration = 250
+		duration = 100
+		fmt.Printf("using default response time: %d\n", duration )
 	}
 
 	time.Sleep(time.Duration(duration) * time.Millisecond)
+
+	ctx.Response.Header.Set("Content-Type", "application/json")
 	ctx.Response.Header.Set("X-Server-Time", strconv.Itoa(duration))
 
 	ctx.Write(mockPost)
