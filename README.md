@@ -14,6 +14,9 @@ install caddy server
 
 `caddy start`  
 
+start to send request to dummymock service and customize the API response time(in milliseconds):  
+`http://localhost:8020/?duration=300`
+
 
 ![Mock Service Workflow](dummymock.png)
 ![Mock Service Response](response.png)
