@@ -3,7 +3,7 @@ Referenced and Thanks to : https://medium.com/@aimvec/high-performance-mocking-f
 
 ### preparation:
 install docker  
-install caddy server  
+install caddy server (MacOS: `brew install caddy`)
 
 ### How to: 
 `cd path/to/target/dir/with/dockerfile`  
